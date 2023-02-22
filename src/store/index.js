@@ -3,7 +3,7 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isShowCart: false,
   quantity: 0,
-  totalprice: 0,
+  totalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -13,13 +13,33 @@ const cartSlice = createSlice({
     toggleCart(state) {
       state.isShowCart = !state.isShowCart;
     },
+    // incrementQuantity(state) {
+    //   state.quantity++;
+    // },
+    // decrementQuantity(state) {
+    //   if (state.quantity > 0) {
+    //     state.quantity--;
+    //   }
+    // },
+    // incrementTotal(state, action) {
+    //   state.totalPrice = state.totalPrice + action.payload;
+    // },
+    // decrementTotal(state, action) {
+    //   if (state.totalPrice > 0) {
+    //     state.totalPrice = state.totalPrice - action.payload;
+    //   }
+    // },
     increment(state, action) {
-      state.quantity = state.quantity + action.payload;
-      state.totalprice = state.totalprice + action.payload;
+      state.quantity++;
+      state.totalPrice = state.totalPrice + action.payload;
     },
     decrement(state, action) {
-      state.quantity = state.quantity - action.payload;
-      state.totalprice = state.totalprice - action.payload;
+      if (state.quantity > 0) {
+        state.quantity--;
+      }
+      if (state.totalPrice > 0) {
+        state.totalPrice = state.totalPrice - action.payload;
+      }
     },
   },
 });
