@@ -3,13 +3,13 @@ import { cartActions } from "../../store";
 import { useDispatch } from "react-redux";
 
 const CartItem = (props) => {
-  const { title, quantity, total, price } = props.item;
+  const { title, quantity, total, price, id } = props.item;
   const dispatch = useDispatch();
   const decrementHandler = () => {
-    dispatch(cartActions.decrement(price));
+    dispatch(cartActions.decrement(id));
   };
   const incrementHandler = () => {
-    dispatch(cartActions.increment(price));
+    dispatch(cartActions.increment({ id, title, price }));
   };
 
   return (

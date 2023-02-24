@@ -4,10 +4,10 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../store";
 
 const ProductItem = (props) => {
-  const { title, price, description } = props;
+  const { title, price, description, id } = props;
   const dispatch = useDispatch();
   const addToCartHandler = () => {
-    dispatch(cartActions.increment(price));
+    dispatch(cartActions.increment({ id, title, price }));
   };
 
   return (
